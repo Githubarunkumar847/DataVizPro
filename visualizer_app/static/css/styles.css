@@ -1,0 +1,193 @@
+/* Global Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;  /* Ensure centered text */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;  /* Center the container */
+  flex-grow: 1;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #34495e;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* Form and Button Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Center the form elements */
+  margin-bottom: 30px;
+}
+
+input[type="file"], select {
+  width: 80%;  /* Adjust width to fit better */
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Error Message Styling */
+.error-message {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.data-preview {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Plot Section */
+.plot-container {
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+}
+
+img {
+  width: 100%;  /* Use full width of the container */
+  height: auto;  /* Make image height auto */
+  max-height: 600px;  /* Limit height for better fit */
+  object-fit: contain;  /* Ensure the plot resizes without distortion */
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+img:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Download Button Styling */
+.btn {
+  background-color: #2ecc71;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #27ae60;
+}
+
+/* Footer Styling */
+footer {
+  background-color: #f1f1f1;
+  padding: 20px 0;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  form {
+    width: 100%;
+    margin: 0;
+  }
+
+  input[type="file"], select {
+    width: 100%;
+  }
+}

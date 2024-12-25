@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualizer</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/scripts.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Visualizer - DataVizPro</h1>
+        <p>Upload a CSV file to visualize your data and generate various types of plots.</p>
+
+        <!-- File Upload Form -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="file" accept=".csv" required />
+            <button type="submit">Upload File</button>
+        </form>
+
+        {% if error_message %}
+        <div class="error-message">
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
+
+        {% if data_preview %}
+        <h2>Data Preview</h2>
+        <div class="data-preview">
+            {{ data_preview|safe }}
+        </div>
+
+        <!-- Plot Configuration -->
+        <h2>Generate Plot</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="column_x">X-Axis:</label>
+            <select name="column_x" id="column_x" required>
+                <option value="" disabled selected>Select X-Axis Column</option>
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="column_y">Y-Axis:</label>
+            <select name="column_y" id="column_y" required>
+                <option value="" disabled selected>Select Y-Axis Column</option>
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="plot_type">Plot Type:</label>
+            <select name="plot_type" id="plot_type" required>
+                <option value="line">Line Plot</option>
+                <option value="bar">Bar Chart</option>
+                <option value="scatter">Scatter Plot</option>
+                <option value="histogram">Histogram</option>
+                <option value="box">Box Plot</option>
+                <option value="area">Area Chart</option>
+                <option value="bubble">Bubble Chart</option>
+                <option value="heatmap">Heatmap</option>
+                <option value="stacked_bar">Stacked Bar Chart</option>
+                <option value="violin">Violin Plot</option>
+                <option value="waterfall">Waterfall Chart</option>
+                <option value="pairplot">Pairplot</option>
+                <option value="density">Density Plot</option>
+                <option value="swarm">Swarm Plot</option>
+                <option value="regression">Regression Plot</option>
+            </select>
+
+            <button type="submit">Generate Plot</button>
+        </form>
+        {% endif %}
+
+        {% if plot_url %}
+        <h2>Generated Plot</h2>
+        <div class="plot-container">
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Generated Plot" class="img-responsive">
+            <form method="GET" action="{% url 'download_plot' %}">
+                <button type="submit" class="btn">Download Plot</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer Section for Contact Information -->
+    <footer>
+        <p>Developed and Maintained by <strong>Jangam Arun Kumar</strong></p>
+        <p>Email: <a href="mailto:arunjkumar847@gmail.com">arunjkumar847@gmail.com</a></p>
+        <p>Phone: <a href="tel:+916301677200">6301677200</a></p>
+    </footer>
+</body>
+</html>
